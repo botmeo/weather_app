@@ -11,10 +11,10 @@ Weather app in HaNoi using [OpenWeatherMap](https://openweathermap.org).
 
 ## Packages in use
 
-- [http](https://pub.dev/packages/http)
-- [connectivity_plus](https://pub.dev/packages/connectivity_plus)
-- [intl](https://pub.dev/packages/intl)
-- [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons)
+- [http](https://pub.dev/packages/http) for talking to the REST API
+- [connectivity_plus](https://pub.dev/packages/connectivity_plus) check network connectivity
+- [intl](https://pub.dev/packages/intl) date/number formatting and parsing
+- [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) launcher icon app
 
 ## OpenWeatherMap API
 
