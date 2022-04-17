@@ -20,3 +20,5 @@ Weather app in HaNoi using [OpenWeatherMap](https://openweathermap.org).
 
 - [Current weather](https://openweathermap.org/current)
 - [Forecast weather](https://openweathermap.org/api/one-call-api)
+
+### [LICENSE: MIT](LICENSE.md)
