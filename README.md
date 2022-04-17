@@ -1,4 +1,4 @@
-# Flutter Weather App
+# Weather App
 
 Weather app in HaNoi using [OpenWeatherMap](https://openweathermap.org).
 
