@@ -12,7 +12,7 @@ extension StringExtension on String {
 Widget currentWeather(BuildContext context, Weather weather) {
   return Container(
     padding: const EdgeInsets.only(left: 20, top: 25, bottom: 25, right: 20),
-    margin: const EdgeInsets.only(left: 15, top: 10, bottom: 10, right: 15),
+    margin: const EdgeInsets.only(left: 15, top: 5, bottom: 5, right: 15),
     decoration: BoxDecoration(
       color: Color(0xFF68C581),
       borderRadius: BorderRadius.all(Radius.circular(25)),
