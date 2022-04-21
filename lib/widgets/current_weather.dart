@@ -92,4 +92,3 @@ Widget currentWeather(BuildContext context, Weather weather) {
     ),
   );
 }
-
