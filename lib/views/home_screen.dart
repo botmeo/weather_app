@@ -61,10 +61,3 @@ Widget forecastWeatherViews() {
     future: WeatherApiClient().getForecastWeather(),
   );
 }
-
-
-
-
-
-
-
