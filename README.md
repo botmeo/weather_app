@@ -2,7 +2,7 @@
 
 Weather app in HaNoi using [OpenWeatherMap](https://openweathermap.org).
 
-<img src = 'https://user-images.githubusercontent.com/59403368/163707927-110fe154-bb1e-41bb-84ae-90ceffe1c822.png' alt="Weather App Preview" width=50% height=50%>
+<img src = 'https://user-images.githubusercontent.com/59403368/163707927-110fe154-bb1e-41bb-84ae-90ceffe1c822.png' alt="Weather App Preview" width=25% height=25%>
 
 ## Features
 
