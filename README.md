@@ -16,9 +16,8 @@ Weather app in HaNoi using [OpenWeatherMap](https://openweathermap.org).
 - [intl](https://pub.dev/packages/intl) date/number formatting and parsing
 - [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) launcher icon app
 
-## OpenWeatherMap API
-
+## Tools
+<b>OpenWeatherMap API</b>
 - [Current weather](https://openweathermap.org/current)
 - [Forecast weather](https://openweathermap.org/api/one-call-api)
 
-### [LICENSE: MIT](LICENSE.md)
