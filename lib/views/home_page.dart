@@ -9,12 +9,11 @@ import 'package:weather_app/components/current_weather_info.dart';
 import 'package:weather_app/components/expand_weather.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
+  final HomeController controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
-    final HomeController controller = Get.put(HomeController());
-
     return Scaffold(
       body: GetBuilder<HomeController>(
         builder: (controller) {
