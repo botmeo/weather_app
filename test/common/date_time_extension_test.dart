@@ -19,7 +19,10 @@ void main() {
     test('test_getTime_validTimestamp', () {
       int timestamp = 1634567890;
       String? result = DatetimeExtension.getTime(timestamp);
-      expect(result, '9:38 PM');
+      // Global
+      expect(result, '2:38 PM');
+      // Vietnam
+      // expect(result, '9:38 PM');
     });
 
     test('test_getTime_nullTimestamp', () {

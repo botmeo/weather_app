@@ -7,15 +7,17 @@ class LoadingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GetBuilder<LoadingController>(
-        builder: (controller) {
-          return SafeArea(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        },
+    return MaterialApp(
+      home: Scaffold(
+        body: GetBuilder<LoadingController>(
+          builder: (controller) {
+            return SafeArea(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
