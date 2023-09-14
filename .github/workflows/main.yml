@@ -2,8 +2,9 @@ name: CI
 
 on:
     push:
-        branches: 
-          - master
+          branches: 
+            - master
+          
         tags: 
           - '*'
     # pull_request: 
@@ -14,6 +15,9 @@ jobs:
     flutter_test:
         name: Run flutter tests and analyze
         runs-on: ubuntu-latest
+        timeout-minutes: 30
+        outputs:
+          environment: ${{ steps.setVersion.outputs.environment }}
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3
@@ -37,6 +41,7 @@ jobs:
         name: Android
         needs: [flutter_test]
         runs-on: ubuntu-latest
+        timeout-minutes: 30
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3    
