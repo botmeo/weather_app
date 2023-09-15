@@ -1,77 +1,70 @@
 name: CI
 
 on:
-    push:
-        branches: 
-          - master
-          
-        tags: 
-          - '*'
-    # pull_request: 
-    #     branches: 
-    #         - master
+  push:      
+    branches: 
+      - master
     
 jobs:
-    flutter_test:
-        name: Run flutter tests and analyze
-        runs-on: ubuntu-latest
-        timeout-minutes: 30
-        outputs:
-          environment: ${{ steps.setVersion.outputs.environment }}
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v3
-            - name: Setup Java      
-              uses: actions/setup-java@v2
-              with: 
-                distribution: 'temurin'
-                java-version: '11'
-            - name: Setup Flutter    
-              uses: subosito/flutter-action@v2
-              with: 
-                flutter-version: '3.7.x'
-                channel: 'stable'
-            - name: Get pub dependencies
-              run: flutter pub get
-            - name: Flutter analyze
-              run: flutter analyze
-            - name: Flutter test
-              run: flutter test
-    build_android:
-        name: Android
-        needs: [flutter_test]
-        runs-on: ubuntu-latest
-        timeout-minutes: 30
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v3    
-            - name: Setup Java    
-              uses: actions/setup-java@v2
-              with: 
-                distribution: 'temurin'
-                java-version: '11'
-            - name: Setup Flutter
-              uses: subosito/flutter-action@v2
-              with:
-                flutter-version: '3.7.1'
-            - name: Get pub dependencies
-              run: flutter pub get
-            - name: Flutter test
-              run: flutter test
-            - name: Build APK
-              run: flutter build apk --release --split-per-abi
-    release:
-        name: Release   
-        needs: [build_android]
-        runs-on: ubuntu-latest
-        # if: github.event_name == 'pull_request'
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v3
-            - name: Release
-              uses: ncipollo/release-action@v1
-              with: 
-                artifacts: 'build/app/outputs/flutter-apk/*.apk'
-                token: ${{ secrets.TOKEN }} 
+  
+  flutter_test:
+    name: Run flutter tests and analyze
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Java      
+        uses: actions/setup-java@v2
+        with: 
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Setup Flutter    
+        uses: subosito/flutter-action@v2
+        with: 
+          flutter-version: '3.7.x'
+          channel: 'stable'
+      - name: Get pub dependencies
+        run: flutter pub get
+      - name: Flutter analyze
+        run: flutter analyze
+      - name: Flutter test
+        run: flutter test
+
+  build_android:
+    name: Android
+    needs: [flutter_test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3    
+      - name: Setup Java    
+        uses: actions/setup-java@v2
+        with: 
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.1'
+      - name: Get pub dependencies
+        run: flutter pub get
+      - name: Flutter test
+        run: flutter test
+      - name: Build APK
+        run: flutter build apk --release --split-per-abi
+      - name: Get version
+        id: get_version
+        run: |
+          version_string=$(cat pubspec.yaml | grep -oP "^version: .+" | cut -d" " -f2)
+          version=$(echo $version_string | cut -d"+" -f1)
+          echo "::set-output name=version::$version"
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with: 
+          artifacts: 'build/app/outputs/flutter-apk/*.apk'
+          tag: ${{ steps.get_version.outputs.version }}
+          token: ${{ secrets.TOKEN }} 
 
 
